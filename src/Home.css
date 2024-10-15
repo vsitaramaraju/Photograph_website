@@ -1,0 +1,58 @@
+/* Home.css */
+
+/* Hero Section Styling */
+.hero-slider-section {
+  height: 100vh;
+  position: relative;
+}
+
+.carousel-item img {
+  height: 100vh;
+  object-fit: cover;
+}
+
+/* Static Caption Styling */
+.static-caption {
+  position: absolute;
+  bottom: 10%;
+  left: 50%;
+  transform: translateX(-50%);
+  color: #fff;
+  text-align: center;
+}
+
+.static-caption h5 {
+  font-size: 2rem;
+  font-weight: bold;
+  letter-spacing: 2px;
+}
+
+.static-caption p {
+  font-size: 1.2rem;
+  letter-spacing: 1px;
+  margin-top: 10px;
+}
+
+/* Home Page Content */
+.home-content {
+  text-align: center;
+}
+
+.home-content h2 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+}
+
+.home-content p {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  margin-bottom: 40px;
+}
+
+.home-content img {
+  transition: transform 0.3s ease-in-out;
+}
+
+.home-content img:hover {
+  transform: scale(1.05);
+}

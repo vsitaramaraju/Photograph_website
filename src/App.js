@@ -2,8 +2,8 @@ import "./App.css";
 
 function App() {
   return (
-    <div className="App">
-      <h1>Hello World</h1>
+    <div className="container mt-5">
+      <h1 className="text-center">Hello World</h1>
     </div>
   );
 }

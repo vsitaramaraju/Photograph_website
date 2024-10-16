@@ -34,13 +34,13 @@
 
 .nav-link {
   color: #fff;
-  font-weight: 400;
+  font-weight: 400 !important;
   margin-right: 15px;
-  letter-spacing: 1px;
+  letter-spacing: 2px;
 }
 
 .nav-link:hover {
-  color: #ddd;
+  color: #fff !important;
 }
 
 .navbar-toggler {

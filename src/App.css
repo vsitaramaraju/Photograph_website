@@ -1,40 +1,12 @@
-.hero-section {
-  height: 100vh;
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  position: relative;
-}
-
-.navbar {
-  height: 80px;
-  width: 100%;
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: 100;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
 .navStyle {
-  padding-top: 4rem !important;
   padding-left: 13rem !important;
   padding-right: 12rem !important;
   z-index: 10 !important;
 }
 
-.navbar-brand {
-  font-size: 1.5rem;
-  font-weight: 600;
-  letter-spacing: 3px;
-  color: #fff;
-}
-
 .nav-link {
   color: #fff;
-  font-weight: 400 !important;
+  font-weight: 600 !important;
   margin-right: 15px;
   letter-spacing: 2px;
 }
@@ -64,11 +36,6 @@
   }
 }
 
-.hero-content {
-  height: 100vh;
-  /* color: #fff; */
-}
-
 .hero-content-container {
   position: relative;
 }
@@ -80,7 +47,7 @@
 }
 
 h1 {
-  letter-spacing: 5px;
+  letter-spacing: 6px;
   margin-bottom: 10px;
 }
 
@@ -96,10 +63,11 @@ p {
 
 .hero-content {
   position: absolute;
+  top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   color: white;
-  z-index: 5; /* Make sure it stays on top of images */
+  z-index: 5;
 }
 
 @media (max-width: 768px) {
@@ -112,7 +80,6 @@ p {
 
 @media (max-width: 991px) {
   .navStyle {
-    padding-top: 0.2rem !important;
     padding-left: 0rem !important;
     padding-right: 0rem !important;
     z-index: 10 !important;
@@ -145,4 +112,31 @@ p {
   .nav-item {
     margin: 0.5rem 0; /* Space between links */
   }
+}
+
+.form-card {
+  background-color: rgb(0 0 0 / 0%) !important;
+  padding: 6rem;
+  border-color: #ba8c44 !important;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.form-control {
+  background-color: rgba(255, 255, 255, 0.8);
+  border: none;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.form-control:focus {
+  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25); /* Focus styling for inputs */
+}
+
+h2 {
+  color: #333; /* Text color for form heading */
+}
+
+.btn-primary {
+  background-color: #ba8c44 !important;
+  border-color: #ba8c44 !important;
 }

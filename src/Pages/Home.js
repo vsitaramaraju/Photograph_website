@@ -2,15 +2,8 @@ import React, { useEffect, useState } from "react";
 import "../Home.css";
 import { Link } from "react-router-dom";
 import video from "../assets/video.mp4";
-import img1 from "../assets/image1.jpg";
-import img2 from "../assets/image2.jpg";
-import img3 from "../assets/image3.jpg";
-import img4 from "../assets/image4.jpg";
-import img5 from "../assets/image5.jpg";
-import img6 from "../assets/image6.jpg";
-import img7 from "../assets/image7.jpg";
-import img8 from "../assets/image8.png";
-import img9 from "../assets/image9.jpg";
+import { HeaderImages } from "../Components/CommonComponent";
+import { Image } from "../Components/CommonComponent";
 
 const Home = () => {
   const [imgClass, setImgClass] = useState("w-100");
@@ -40,30 +33,21 @@ const Home = () => {
           <div
             id="carouselExampleControls"
             className="carousel slide"
-            data-ride="carousel"
+            data-bs-ride="carousel"
           >
             <div className="carousel-inner">
-              <div className="carousel-item active">
-                <img
-                  className={`d-block ${imgClass}`}
-                  src={img1}
-                  alt="First slide"
-                />
-              </div>
-              <div className="carousel-item">
-                <img
-                  className={`d-block ${imgClass}`}
-                  src={img2}
-                  alt="Second slide"
-                />
-              </div>
-              <div className="carousel-item">
-                <img
-                  className={`d-block ${imgClass}`}
-                  src={img3}
-                  alt="Third slide"
-                />
-              </div>
+              {HeaderImages.map((item, index) => (
+                <div
+                  className={`carousel-item ${index === 0 ? "active" : ""}`}
+                  key={index}
+                >
+                  <img
+                    className={`d-block ${imgClass}`}
+                    src={item}
+                    alt={`Slide ${index + 1}`}
+                  />
+                </div>
+              ))}
             </div>
 
             {/* Carousel Controls */}
@@ -90,59 +74,35 @@ const Home = () => {
         {/* Multi card */}
         <div className="container" style={{ maxWidth: 1060, paddingTop: 30 }}>
           <div className="row row-cols-1 row-cols-md-3 g-3 pt-5 justify-content-center">
-            <div className="col">
-              <Link
-                className="card"
-                to="/portfolio"
-                style={{ textDecoration: "none" }}
-              >
-                <img src={img4} className="card-img-top main-img" alt="img1" />
-                <img
-                  src={img5}
-                  className="card-img-top hover-img"
-                  alt="img1 hover"
-                />
-                <div>
-                  <h4 className="fontStyle">Model</h4>
-                </div>
-              </Link>
-            </div>
-            <div className="col">
-              <Link
-                className="card"
-                to="/portfolio"
-                style={{ textDecoration: "none" }}
-              >
-                <img src={img6} className="card-img-top main-img" alt="img2" />
-                <img
-                  src={img7}
-                  className="card-img-top hover-img"
-                  alt="img1 hover"
-                />
-                <div>
-                  <h4 className="fontStyle">Marriage</h4>
-                </div>
-              </Link>
-            </div>
-            <div className="col">
-              <Link
-                className="card"
-                to="/portfolio"
-                style={{ textDecoration: "none" }}
-              >
-                <img src={img8} className="card-img-top main-img" alt="img3" />
-                <img
-                  src={img9}
-                  className="card-img-top hover-img"
-                  alt="img1 hover"
-                />
-                <div>
-                  <h4 className="fontStyle">Baby</h4>
-                </div>
-              </Link>
-            </div>
+            {Image.map((item, index) => (
+              <div className="col" key={index}>
+                <Link
+                  className="card"
+                  to="/portfolio"
+                  style={{ textDecoration: "none" }}
+                >
+                  <div className="img-container">
+                    <img
+                      src={item.img1}
+                      className="card-img-top main-img"
+                      alt={`img ${index + 1}`}
+                    />
+                    <img
+                      src={item.img2}
+                      className="card-img-top hover-img"
+                      alt={`img ${index + 1} hover`}
+                    />
+                  </div>
+                  <div>
+                    <h4 className="fontStyle">{item.title}</h4>
+                  </div>
+                </Link>
+              </div>
+            ))}
           </div>
         </div>
+
+        {/*Video page*/}
         <div className="container-fluid" style={{ paddingTop: "6rem" }}>
           <div
             className="row justify-content-center align-items-center"

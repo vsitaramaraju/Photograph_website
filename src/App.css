@@ -140,3 +140,21 @@ h2 {
   background-color: #ba8c44 !important;
   border-color: #ba8c44 !important;
 }
+
+.app-wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* Ensure the wrapper takes full height */
+}
+
+footer {
+  background-color: #333;
+  color: #fff;
+  text-align: center;
+  padding: 10px 0;
+}
+
+.footerlinks {
+  text-decoration: none;
+  letter-spacing: 1.5px;
+}

@@ -6,6 +6,7 @@ import ClientAlbum from "./Pages/ClientAlbum";
 import Bio from "./Pages/Bio";
 import Navbar from "./Components/Nav";
 import Home from "./Pages/Home";
+import Footer from "./Components/Footer";
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
         <Route path="/client-album" element={<ClientAlbum />} />
         <Route path="/bio" element={<Bio />} />
       </Routes>
+      <Footer />
     </div>
   );
 }

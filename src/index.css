@@ -6,15 +6,9 @@ body {
   -moz-osx-font-smoothing: grayscale;
   margin: 0;
   padding: 0;
-  height: 100vh;
-}
-.main-content {
+  min-height: 100vh; /* Updated to ensure full height */
   position: relative;
-  z-index: 1;
-  overflow-y: auto;
-  height: 100vh;
-  padding: 20px;
-  color: white;
+  z-index: 0;
 }
 
 body::before {
@@ -28,9 +22,25 @@ body::before {
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
+  z-index: -1; /* Ensure the background stays behind all content */
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-    monospace;
+.main-content {
+  position: relative;
+  z-index: 1;
+  overflow-y: auto;
+  min-height: calc(
+    100vh - 60px
+  ); /* Adjust this to account for the footer height */
+  padding: 20px;
+  color: white;
+}
+
+footer {
+  position: relative;
+  z-index: 1;
+  background-color: rgba(0, 0, 0, 0.8); /* Optional: to ensure readability */
+  color: white;
+  text-align: center;
+  padding: 10px 0;
 }

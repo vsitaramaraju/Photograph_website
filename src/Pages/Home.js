@@ -2,7 +2,15 @@ import React, { useEffect, useState } from "react";
 import "../Home.css";
 import { Link } from "react-router-dom";
 import video from "../assets/video.mp4";
-import ContactMe from "./ContactMe";
+import img1 from "../assets/image1.jpg";
+import img2 from "../assets/image2.jpg";
+import img3 from "../assets/image3.jpg";
+import img4 from "../assets/image4.jpg";
+import img5 from "../assets/image5.jpg";
+import img6 from "../assets/image6.jpg";
+import img7 from "../assets/image7.jpg";
+import img8 from "../assets/image8.png";
+import img9 from "../assets/image9.jpg";
 
 const Home = () => {
   const [imgClass, setImgClass] = useState("w-100");
@@ -38,21 +46,21 @@ const Home = () => {
               <div className="carousel-item active">
                 <img
                   className={`d-block ${imgClass}`}
-                  src="https://lh3.googleusercontent.com/p/AF1QipOlKO8D_FCHwPjc_e7w6TlPOlKt5YrqlhaALNjs=s1360-w1360-h1020"
+                  src={img1}
                   alt="First slide"
                 />
               </div>
               <div className="carousel-item">
                 <img
                   className={`d-block ${imgClass}`}
-                  src="https://lh3.googleusercontent.com/p/AF1QipNVXrCEOCUsnlua4ByhJYbSD1u4ZnH1InPxEUZu=s1360-w1360-h1020"
+                  src={img2}
                   alt="Second slide"
                 />
               </div>
               <div className="carousel-item">
                 <img
                   className={`d-block ${imgClass}`}
-                  src="https://lh3.googleusercontent.com/p/AF1QipOcDrLnCsMgHVsS1v4mFryNJm0h_LvOl2KDdFON=s1360-w1360-h1020"
+                  src={img3}
                   alt="Third slide"
                 />
               </div>
@@ -88,13 +96,9 @@ const Home = () => {
                 to="/portfolio"
                 style={{ textDecoration: "none" }}
               >
+                <img src={img4} className="card-img-top main-img" alt="img1" />
                 <img
-                  src="https://lh3.googleusercontent.com/p/AF1QipO4sjG9H-NKKVc1_8SSDUb0UXeEQPOyneSmdBuw=s1360-w1360-h1020"
-                  className="card-img-top main-img"
-                  alt="img1"
-                />
-                <img
-                  src="https://lh3.googleusercontent.com/p/AF1QipPl5qRAsM6dEBb8vK2uJhjwXcgY7g1D8tUMyoZJ=s1360-w1360-h1020"
+                  src={img5}
                   className="card-img-top hover-img"
                   alt="img1 hover"
                 />
@@ -109,13 +113,9 @@ const Home = () => {
                 to="/portfolio"
                 style={{ textDecoration: "none" }}
               >
+                <img src={img6} className="card-img-top main-img" alt="img2" />
                 <img
-                  src="https://lh3.googleusercontent.com/p/AF1QipPMF1lciHFYRfAcw4dCk04qWzVd_tZkQaK6brYP=s1360-w1360-h1020"
-                  className="card-img-top main-img"
-                  alt="img2"
-                />
-                <img
-                  src="https://lh3.googleusercontent.com/p/AF1QipMDy-Sz7X2j6FkxgkUmecbWjxEX9SPIDmD2Sd22=s1360-w1360-h1020"
+                  src={img7}
                   className="card-img-top hover-img"
                   alt="img1 hover"
                 />
@@ -130,13 +130,9 @@ const Home = () => {
                 to="/portfolio"
                 style={{ textDecoration: "none" }}
               >
+                <img src={img8} className="card-img-top main-img" alt="img3" />
                 <img
-                  src="https://lh3.googleusercontent.com/p/AF1QipNPxnZjX0IH2Kjr0sFyJJsVZJ6J8RL7husXLmd9=s1360-w1360-h1020"
-                  className="card-img-top main-img"
-                  alt="img3"
-                />
-                <img
-                  src="https://lh3.googleusercontent.com/p/AF1QipMLBWm1m6-hDaCMAii7K75Zl4vi3MgDg9zEKUtp=s1360-w1360-h1020"
+                  src={img9}
                   className="card-img-top hover-img"
                   alt="img1 hover"
                 />
@@ -150,14 +146,14 @@ const Home = () => {
         <div className="container-fluid" style={{ paddingTop: "6rem" }}>
           <div
             className="row justify-content-center align-items-center"
-            style={{ minHeight: "100vh" }} // Changed to minHeight for better responsiveness
+            style={{ minHeight: "100vh" }}
           >
             <div className="col-12">
               {" "}
               {/* Full width for all screen sizes */}
               <div
                 className="card text-center text-black bg-custom"
-                style={{ marginBottom: "3rem", border: "none" }} // Removed bottom for better responsiveness
+                style={{ marginBottom: "3rem", border: "none" }}
               >
                 <div className="card-body">
                   <h1 className="card-title">HELLO THERE!</h1>
@@ -183,7 +179,6 @@ const Home = () => {
             </div>
           </div>
         </div>
-        <ContactMe />
       </main>
     </>
   );

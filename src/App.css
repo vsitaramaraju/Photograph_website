@@ -12,7 +12,7 @@
 }
 
 .nav-link:hover {
-  color: #fff !important;
+  color: #130101 !important;
 }
 
 .navbar-toggler {
@@ -68,6 +68,15 @@ p {
   transform: translate(-50%, -50%);
   color: white;
   z-index: 5;
+}
+
+.hero-content-new {
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  z-index: 5;
+  padding-top: 25rem;
 }
 
 @media (max-width: 768px) {
@@ -157,4 +166,83 @@ footer {
 .footerlinks {
   text-decoration: none;
   letter-spacing: 1.5px;
+}
+
+/*Portfolio*/
+
+.album-item-frame {
+  position: relative;
+  border-radius: 15px;
+  overflow: hidden;
+  background-color: white;
+  padding: 15px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  display: flex;
+  align-items: center;
+}
+
+.album-item-frame:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+}
+
+.album-images {
+  display: flex;
+  justify-content: space-between;
+  flex-grow: 1;
+  gap: 10px; /* Space between images */
+}
+
+.composite-image {
+  width: calc(33.33% - 10px); /* 3 images per row with gap */
+  height: 350px; /* Increased height */
+  object-fit: cover;
+  border-radius: 5px;
+  transition: transform 0.3s ease;
+}
+
+.album-item-frame:hover .composite-image {
+  transform: scale(1.05);
+}
+
+.album-title-overlay {
+  position: absolute;
+  bottom: 15px;
+  left: 20px;
+  right: 20px;
+  padding: 10px;
+  border-radius: 5px;
+  color: white;
+  font-size: 24px;
+  font-weight: bold;
+  text-align: center;
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+  transition: background 0.3s ease;
+}
+
+.album-item-frame:hover .album-title-overlay {
+  background: rgba(0, 0, 0, 0.7); /* Darken the background on hover */
+}
+
+.album-link {
+  text-decoration: none;
+  display: block;
+}
+
+@media (max-width: 768px) {
+  .composite-image {
+    width: 100%; /* Stack images vertically on smaller screens */
+    height: auto;
+    margin-bottom: 10px;
+  }
+
+  .album-images {
+    flex-direction: column;
+    gap: 0; /* Remove the gap when images stack */
+  }
+
+  .album-item-frame {
+    flex-direction: column;
+  }
 }

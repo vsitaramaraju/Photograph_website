@@ -1,12 +1,14 @@
 import React, { useEffect, useState } from "react";
+import { useLocation } from "react-router-dom";
 import "../Home.css";
 import { Link } from "react-router-dom";
 import video from "../assets/video.mp4";
-import { HeaderImages } from "../Components/CommonComponent";
-import { Image } from "../Components/CommonComponent";
+import { CommonHead, HeaderImages } from "../Components/Common/CommonComponent";
+import { Image } from "../Components/Common/CommonComponent";
 
 const Home = () => {
   const [imgClass, setImgClass] = useState("w-100");
+  const location = useLocation();
 
   useEffect(() => {
     const handleResize = () => {
@@ -66,10 +68,11 @@ const Home = () => {
           </div>
 
           {/* Hero Content */}
-          <div className="hero-content text-center">
-            <h1 className="display-4 fw-bold">SAINADH KAMMA</h1>
-            <p className="lead">Event's Photographer</p>
-          </div>
+          <CommonHead
+            title="SAINADH KAMMA"
+            miniTitle="Event's Photographer"
+            location={location.pathname}
+          />
         </div>
         {/* Multi card */}
         <div className="container" style={{ maxWidth: 1060, paddingTop: 30 }}>
@@ -78,7 +81,7 @@ const Home = () => {
               <div className="col" key={index}>
                 <Link
                   className="card"
-                  to="/portfolio"
+                  to={`/portfolio/${item.url}`}
                   style={{ textDecoration: "none" }}
                 >
                   <div className="img-container">
@@ -109,8 +112,6 @@ const Home = () => {
             style={{ minHeight: "100vh" }}
           >
             <div className="col-12">
-              {" "}
-              {/* Full width for all screen sizes */}
               <div
                 className="card text-center text-black bg-custom"
                 style={{ marginBottom: "3rem", border: "none" }}

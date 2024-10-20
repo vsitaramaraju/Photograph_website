@@ -22,16 +22,14 @@ body::before {
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  z-index: -1; /* Ensure the background stays behind all content */
+  z-index: -1;
 }
 
 .main-content {
   position: relative;
   z-index: 1;
   overflow-y: auto;
-  min-height: calc(
-    100vh - 60px
-  ); /* Adjust this to account for the footer height */
+  min-height: calc(100vh - 60px);
   padding: 20px;
   color: white;
 }
@@ -39,7 +37,7 @@ body::before {
 footer {
   position: relative;
   z-index: 1;
-  background-color: rgba(0, 0, 0, 0.8); /* Optional: to ensure readability */
+  background-color: rgba(0, 0, 0, 0.8);
   color: white;
   text-align: center;
   padding: 10px 0;

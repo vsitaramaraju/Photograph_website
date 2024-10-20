@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { NavLinks } from "./Common/CommonComponent";
 
 const Footer = () => {
   return (
@@ -7,21 +8,11 @@ const Footer = () => {
       <div className="container text-center">
         {/* Navigation Menu Links */}
         <div className="mb-3">
-          <Link to="/" className="text-black mx-3 footerlinks">
-            Home
-          </Link>
-          <Link to="/portfolio" className="text-black mx-3 footerlinks">
-            Portfolio
-          </Link>
-          <Link to="/video" className="text-black mx-3 footerlinks">
-            Video
-          </Link>
-          <Link to="/client-album" className="text-black mx-3 footerlinks">
-            Client Album
-          </Link>
-          <Link to="/bio" className="text-black mx-3 footerlinks">
-            Bio
-          </Link>
+          {NavLinks.map(item => (
+            <Link className="text-black mx-3 footerlinks" to={item.link}>
+              {item.title}
+            </Link>
+          ))}
         </div>
         {/* Social Media Icons */}
         <div className="mb-3">

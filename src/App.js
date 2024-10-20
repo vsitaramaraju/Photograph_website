@@ -7,6 +7,8 @@ import Bio from "./Pages/Bio";
 import Navbar from "./Components/Nav";
 import Home from "./Pages/Home";
 import Footer from "./Components/Footer";
+import CommonPortfolio from "./Components/Common/CommonPortfolio";
+import { Path } from "./Components/Common/CommonComponent";
 
 function App() {
   return (
@@ -18,6 +20,9 @@ function App() {
         <Route path="/video" element={<Video />} />
         <Route path="/client-album" element={<ClientAlbum />} />
         <Route path="/bio" element={<Bio />} />
+        {Path.map(item => (
+          <Route path={`/portfolio/${item}`} element={<CommonPortfolio />} />
+        ))}
       </Routes>
       <Footer />
     </div>

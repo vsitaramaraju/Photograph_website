@@ -1,0 +1,140 @@
+.gallery {
+  -webkit-column-count: 3;
+  -moz-column-count: 3;
+  column-count: 3;
+  -webkit-column-width: 33%;
+  -moz-column-width: 33%;
+  column-width: 33%;
+  padding: 0 12px;
+}
+
+.gallery .pics {
+  -webkit-transition: all 350ms ease;
+  transition: all 350ms ease;
+  cursor: pointer;
+  margin-bottom: 12px;
+}
+
+.gallery .pics:hover {
+  filter: opacity(0.8);
+}
+
+.modal {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  backdrop-filter: blur(5px);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1050;
+  background-color: rgba(0, 0, 0, 0.6) !important;
+}
+
+.modal-dialog.modal-fullscreen {
+  max-width: 100%;
+  width: auto;
+  height: 100%;
+  margin: 0;
+}
+
+.transparent-modal {
+  background-color: transparent; /* Makes modal background transparent */
+  border: none;
+}
+
+.modal-content {
+  border: none;
+  background-color: transparent !important;
+  max-height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-body {
+  position: relative;
+  width: 80%;
+  height: 80%;
+}
+
+.close {
+  position: absolute;
+  top: 10px;
+  right: 20px;
+  font-size: 28px;
+  color: #fff;
+  cursor: pointer;
+  z-index: 1051;
+}
+
+.image-container {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.modal-image {
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  height: auto;
+  object-fit: contain; /* Ensures image keeps aspect ratio */
+}
+
+.prev,
+.next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(255, 255, 255, 0.7); /* Semi-transparent background */
+  border: none;
+  font-size: 36px;
+  color: #000;
+  cursor: pointer;
+  z-index: 1050; /* Above modal content */
+  padding: 10px 15px;
+  border-radius: 50%;
+}
+
+.prev {
+  left: 20px;
+  background-color: transparent !important;
+  color: #fff;
+}
+
+.next {
+  right: 20px;
+  background-color: transparent !important;
+  color: #fff;
+}
+
+.prev:disabled,
+.next:disabled {
+  background-color: transparent !important;
+  color: #fff;
+  cursor: not-allowed;
+}
+
+@media (max-width: 991px) {
+  .gallery {
+    -webkit-column-count: 2;
+    -moz-column-count: 2;
+    column-count: 2;
+  }
+}
+
+@media (max-width: 480px) {
+  .gallery {
+    -webkit-column-count: 1;
+    -moz-column-count: 1;
+    column-count: 1;
+    -webkit-column-width: 100%;
+    -moz-column-width: 100%;
+    column-width: 100%;
+  }
+}

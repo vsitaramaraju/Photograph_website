@@ -13,6 +13,7 @@ const CommonPortfolio = () => {
 
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const [visibleImagesCount, setVisibleImagesCount] = useState(10);
 
   const openModal = index => {
     setCurrentImageIndex(index);
@@ -37,6 +38,10 @@ const CommonPortfolio = () => {
     );
   };
 
+  const handleSeeMore = () => {
+    setVisibleImagesCount(prevCount => prevCount + 10);
+  };
+
   return (
     <>
       <div style={{ minHeight: "55vh" }}>
@@ -45,23 +50,34 @@ const CommonPortfolio = () => {
       <div style={{ backgroundColor: "rgb(255 255 255 / 33%)" }}>
         <div className="container py-5 gallery">
           {selectedGallery ? (
-            selectedGallery.images.map((image, index) => (
-              <div
-                className="pics"
-                key={index}
-                onClick={() => openModal(index)}
-              >
-                <img
-                  src={image}
-                  alt={`Gallery Image ${index + 1}`}
-                  style={{ width: "100%" }}
-                />
-              </div>
-            ))
+            <>
+              {selectedGallery.images
+                .slice(0, visibleImagesCount)
+                .map((image, index) => (
+                  <div
+                    className="pics"
+                    key={index}
+                    onClick={() => openModal(index)}
+                  >
+                    <img
+                      src={image}
+                      alt={`Gallery Image ${index + 1}`}
+                      style={{ width: "100%" }}
+                    />
+                  </div>
+                ))}
+            </>
           ) : (
             <p>No images found for this album.</p>
           )}
         </div>
+        {visibleImagesCount < selectedGallery.images.length && (
+          <div className="text-center p-3">
+            <button className="btn btn-primary" onClick={handleSeeMore}>
+              See More
+            </button>
+          </div>
+        )}
       </div>
 
       {/* Modal for viewing images */}

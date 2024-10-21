@@ -16,8 +16,8 @@ export const Image = [
   {
     img1: "/images/image6.jpg",
     img2: "/images/image7.jpg",
-    title: "Marriage",
-    url: "marriage"
+    title: "Wedding",
+    url: "wedding"
   },
   {
     img1: "/images/image8.png",
@@ -40,8 +40,8 @@ export const PortFolioImages = [
     img1: "/images/image6.jpg",
     img2: "/images/image7.jpg",
     img3: "/images/image16.jpg",
-    title: "Marriage",
-    url: "marriage"
+    title: "Wedding",
+    url: "wedding"
   },
   {
     img1: "/images/image8.png",
@@ -52,7 +52,7 @@ export const PortFolioImages = [
   }
 ];
 
-export const Path = ["model", "marriage", "baby"];
+export const Path = ["model", "wedding", "baby"];
 
 /*Nav links*/
 export const NavLinks = [
@@ -90,11 +90,16 @@ export const GallaryImage = [
       "/images/image10.jpg",
       "/images/image11.jpg",
       "/images/image12.jpg",
-      "/images/image14.jpg"
+      "/images/image14.jpg",
+      "/images/image25.jpg",
+      "/images/image26.jpg",
+      "/images/image27.jpg",
+      "/images/image34.png",
+      "/images/image39.jpg"
     ]
   },
   {
-    type: "marriage",
+    type: "wedding",
     images: [
       "/images/image6.jpg",
       "/images/image7.jpg",
@@ -102,7 +107,14 @@ export const GallaryImage = [
       "/images/image15.jpg",
       "/images/image16.jpg",
       "/images/image17.png",
-      "/images/image18.jpg"
+      "/images/image18.jpg",
+      "/images/image28.jpg",
+      "/images/image29.jpg",
+      "/images/image30.jpg",
+      "/images/image31.jpg",
+      "/images/image32.jpg",
+      "/images/image33.jpg",
+      "/images/image35.png"
     ]
   },
   {
@@ -115,7 +127,67 @@ export const GallaryImage = [
       "/images/image21.jpg",
       "/images/image22.jpg",
       "/images/image23.png",
-      "/images/image24.jpg"
+      "/images/image24.jpg",
+      "/images/image36.jpg",
+      "/images/image37.jpg",
+      "/images/image38.jpg",
+      "/images/image40.jpg"
+    ]
+  }
+];
+
+/*Videos*/
+
+export const videos = [
+  {
+    id: 1,
+    src: "/videos/video1.mp4",
+    title: "Video 1"
+  },
+  { id: 2, src: "/videos/video2.mp4", title: "Video 2" },
+  { id: 3, src: "/videos/video3.mp4", title: "Video 3" },
+  { id: 4, src: "/videos/video4.mp4", title: "Video 4" }
+];
+
+/*Client ablum*/
+
+export const Clients = [
+  {
+    id: 1,
+    name: "RAJ WEDS SHEELA",
+    eventDate: "18/14/2023",
+    profileImg: "/images/image6.jpg",
+    gallery: [
+      "/images/image11.jpg",
+      "/images/image13.jpg",
+      "/images/image15.jpg",
+      "/images/image16.jpg"
+    ]
+  },
+  {
+    id: 2,
+    name: "VIJAY WEDS LAKSHMI",
+    eventDate: "18/14/2023",
+    profileImg: "/images/image32.jpg",
+    gallery: [
+      "/images/image22.jpg",
+      "/images/image23.png",
+      "/images/image24.jpg",
+      "/images/image36.jpg"
+    ]
+  },
+  {
+    id: 3,
+    name: "ROHITH",
+    eventDate: "18/14/2023",
+    profileImg: "/images/image24.jpg",
+    gallery: [
+      "/images/image28.jpg",
+      "/images/image29.jpg",
+      "/images/image30.jpg",
+      "/images/image31.jpg",
+      "/images/image32.jpg",
+      "/images/image33.jpg"
     ]
   }
 ];

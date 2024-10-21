@@ -9,10 +9,12 @@ import Home from "./Pages/Home";
 import Footer from "./Components/Footer";
 import CommonPortfolio from "./Components/Common/CommonPortfolio";
 import { Path } from "./Components/Common/CommonComponent";
+import ScrollToTop from "./Components/ScrollTop";
 
 function App() {
   return (
     <div className="App">
+      <ScrollToTop />
       <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />

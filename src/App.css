@@ -12,7 +12,7 @@
 }
 
 .nav-link:hover {
-  color: #130101 !important;
+  color: #fff !important;
 }
 
 .navbar-toggler {
@@ -244,5 +244,187 @@ footer {
 
   .album-item-frame {
     flex-direction: column;
+  }
+}
+
+/*Videos page*/
+
+.video-wrapper {
+  overflow: hidden;
+  border-radius: 10px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  position: relative;
+}
+
+.video-wrapper:hover {
+  transform: scale(1.05);
+  box-shadow: 0px 10px 25px rgba(0, 0, 0, 0.15);
+}
+
+.video-iframe {
+  width: 100%;
+  height: 250px;
+  border-radius: 10px;
+}
+
+.video-title {
+  font-weight: bold;
+  color: #333;
+}
+
+@media (max-width: 768px) {
+  .video-iframe {
+    height: 200px;
+  }
+
+  .video-card {
+    margin-bottom: 2rem;
+  }
+}
+
+/*Client Album*/
+
+.client-img {
+  width: 100%;
+  height: 300px !important;
+  object-fit: cover; /* Ensures the image is cropped to fit */
+  border-radius: 10px;
+  position: relative;
+}
+
+.client-info-overlay {
+  position: absolute;
+  height: -webkit-fill-available;
+  left: 0;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+  color: white;
+  z-index: 2; /* Make sure it sits on top of the image */
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+
+.client-info {
+  display: flex;
+  flex-direction: column;
+  height: -webkit-fill-available;
+  justify-content: center;
+  text-align: center;
+  letter-spacing: 2px;
+}
+
+.client-name {
+  font-size: 1.25rem;
+  font-weight: bold;
+  margin: 0;
+  padding-bottom: 5px;
+}
+
+/* Styling for event date */
+.event-date {
+  font-size: 0.875rem;
+  margin: 0;
+}
+
+/* Add hover effect for the card */
+.client-card:hover .client-img {
+  transform: scale(1.05); /* Slight zoom on hover */
+  transition: transform 0.3s ease-in-out;
+}
+
+.client-card {
+  position: relative;
+}
+
+.client-card:hover .client-img {
+  transform: scale(1.03);
+}
+
+/* Modal styling */
+.modal-dialog {
+  max-width: 100%; /* Fullscreen width modal */
+  margin: 0; /* No margin */
+}
+
+.modal-content {
+  background-color: rgba(255, 255, 255, 0.9); /* Transparent modal background */
+}
+
+.modal-body {
+  background-color: #ffffff00;
+}
+
+.modal-img {
+  width: 100%;
+  height: 350px; /* Uniform size inside the modal */
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+.close {
+  background-color: transparent;
+  border: none;
+}
+
+.large-image {
+  max-width: 90%;
+  max-height: 80vh;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+.modal-img {
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.modal-img:hover {
+  transform: scale(1.05); /* Slight zoom on hover */
+}
+
+.selected-img {
+  border: 2px solid #007bff; /* Highlight the selected thumbnail */
+}
+
+.image-nav button {
+  margin: 5px;
+}
+
+/*Bio*/
+
+.bio-text {
+  letter-spacing: 3px;
+}
+
+.bio {
+  font-size: medium;
+}
+
+@media (max-width: 992px) {
+  .bio-text {
+    padding-left: 4rem !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .client-img,
+  .modal-img {
+    height: 200px; /* Adjust height for smaller screens */
+  }
+  .bio-text {
+    padding-left: 1rem !important;
+    text-align: center;
+  }
+  .bio {
+    text-align: justify !important ;
+  }
+}
+
+@media (max-width: 576px) {
+  .client-img,
+  .modal-img {
+    height: 150px; /* Further adjust for very small screens */
   }
 }

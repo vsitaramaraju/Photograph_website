@@ -418,9 +418,14 @@ footer {
   .bio-text {
     padding-left: 1rem !important;
     text-align: center;
+    padding-top: 1.5rem;
   }
   .bio {
     text-align: justify !important ;
+  }
+
+  .contact-details {
+    text-align: center !important;
   }
 }
 

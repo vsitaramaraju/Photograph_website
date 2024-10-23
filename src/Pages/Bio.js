@@ -43,7 +43,7 @@ const Bio = () => {
           {/* Contact Section - Details and Form Side by Side */}
           <div className="row align-items-center mb-5">
             <div className="col-md-4 text-start">
-              <h2 className="bio-text">Contact Me</h2>
+              <h2 className="contact-me">Contact Me</h2>
               <ul className="list-unstyled contact-details">
                 <li>
                   <strong>Email:</strong> {bioData.contact.email}

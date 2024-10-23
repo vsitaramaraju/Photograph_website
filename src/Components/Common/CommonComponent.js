@@ -1,3 +1,6 @@
+import { memo } from "react";
+import { Link } from "react-router-dom";
+
 /*Header Carousel Images*/
 export const HeaderImages = [
   "/images/image1.jpg",
@@ -53,6 +56,39 @@ export const PortFolioImages = [
 ];
 
 export const Path = ["model", "wedding", "baby"];
+
+export const AlbumItem = memo(({ item }) => (
+  <div className="col-md-12 mb-4">
+    <Link to={item.url} className="album-link">
+      <div className="album-item-frame">
+        <div className="album-images">
+          <img
+            src={item.img1}
+            className="composite-image"
+            alt={`${item.title} Album`}
+            loading="lazy" // Lazy loading
+          />
+          <img
+            src={item.img2}
+            className="composite-image"
+            alt={`${item.title} Album`}
+            loading="lazy" // Lazy loading
+          />
+          <img
+            src={item.img3}
+            className="composite-image"
+            alt={`${item.title} Album`}
+            loading="lazy" // Lazy loading
+          />
+        </div>
+        {/* Title overlay */}
+        <div className="album-title-overlay">
+          <h3>{item.title}</h3>
+        </div>
+      </div>
+    </Link>
+  </div>
+));
 
 /*Nav links*/
 export const NavLinks = [
@@ -149,6 +185,21 @@ export const videos = [
   { id: 4, src: "/videos/video4.mp4", title: "Video 4" }
 ];
 
+export const VideoItem = memo(({ video }) => (
+  <div className="col-md-6 col-lg-4 mb-4 video-card">
+    <div className="video-wrapper shadow-lg">
+      <iframe
+        className="video-iframe"
+        src={video.src}
+        title={video.title}
+        frameBorder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowFullScreen
+        loading="lazy"
+      />
+    </div>
+  </div>
+));
 /*Client ablum*/
 
 export const Clients = [
@@ -191,3 +242,52 @@ export const Clients = [
     ]
   }
 ];
+
+/*Bio page*/
+
+export const bioData = {
+  owner: {
+    name: "SAINADH KAMMA",
+    description: `
+      Brief description about the owner and their work. You can elaborate on the owner's background, 
+      expertise, and the purpose of their work. Add any professional highlights, skills, and other 
+      relevant information that you'd like to showcase.
+    `
+  },
+  workDetails: `
+    Some additional information or highlights of your work can be added here. You can elaborate 
+    further on your projects, achievements, or services offered. Include any important highlights 
+    that showcase your expertise and the quality of your work.
+  `,
+  contact: {
+    email: "sainadhkamma@gmail.com",
+    phone: "+91-9951799508",
+    address: `Love Tales Studio, Vishnu Virdhana,
+              32-2-19/A12, Vishnu Vardhana Rao St, Labbipet,
+              Vijayawada, Andhra Pradesh 520010`
+  }
+};
+
+/*Client Card*/
+
+export const ClientCard = memo(({ client, onOpen }) => (
+  <div className="col-md-4 mb-4">
+    <div
+      className="client-card"
+      onClick={() => onOpen(client)}
+      style={{ cursor: "pointer" }}
+    >
+      <div className="client-info-overlay">
+        <div className="client-info">
+          <h5 className="client-name">{client.name}</h5>
+          <p className="event-date">{client.eventDate}</p>
+        </div>
+      </div>
+      <img
+        src={client.profileImg}
+        alt={client.name}
+        className="img-fluid client-img"
+      />
+    </div>
+  </div>
+));

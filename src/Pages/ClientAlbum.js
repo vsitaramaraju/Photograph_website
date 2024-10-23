@@ -1,44 +1,55 @@
-import React, { useState } from "react";
-import { Clients, CommonHead } from "../Components/Common/CommonComponent";
+import React, { useState, useCallback, memo } from "react";
+import {
+  ClientCard,
+  Clients,
+  CommonHead
+} from "../Components/Common/CommonComponent";
+import ImageModal from "../Components/Common/ImageModal";
 
 const ClientAlbum = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedClient, setSelectedClient] = useState(null);
   const [selectedImageIndex, setSelectedImageIndex] = useState(null);
+  const [isSingleImageModalOpen, setIsSingleImageModalOpen] = useState(false);
 
-  // Function to open the modal with selected client's photos
-  const openModal = client => {
+  const openModal = useCallback(client => {
     setSelectedClient(client);
     setIsModalOpen(true);
-  };
+  }, []);
 
-  // Function to close the modal
-  const closeModal = () => {
+  const closeModal = useCallback(() => {
     setIsModalOpen(false);
     setSelectedClient(null);
-    setSelectedImageIndex(null); // Reset the selected image index
-  };
+    setSelectedImageIndex(null);
+  }, []);
 
-  // Function to show the next image
-  const showNextImage = () => {
-    setSelectedImageIndex(
-      prevIndex => (prevIndex + 1) % selectedClient.gallery.length
-    );
-  };
-
-  // Function to show the previous image
-  const showPrevImage = () => {
-    setSelectedImageIndex(
-      prevIndex =>
-        (prevIndex - 1 + selectedClient.gallery.length) %
-        selectedClient.gallery.length
-    );
-  };
-
-  // Function to select a specific image when a thumbnail is clicked
-  const selectImage = index => {
+  const openSingleImageModal = useCallback(index => {
     setSelectedImageIndex(index);
-  };
+    setIsSingleImageModalOpen(true);
+  }, []);
+
+  const closeSingleImageModal = useCallback(() => {
+    setIsSingleImageModalOpen(false);
+    setSelectedImageIndex(null);
+  }, []);
+
+  const showNextImage = useCallback(() => {
+    if (selectedImageIndex !== null) {
+      setSelectedImageIndex(
+        prevIndex => (prevIndex + 1) % selectedClient.gallery.length
+      );
+    }
+  }, [selectedClient, selectedImageIndex]);
+
+  const showPrevImage = useCallback(() => {
+    if (selectedImageIndex !== null) {
+      setSelectedImageIndex(
+        prevIndex =>
+          (prevIndex - 1 + selectedClient.gallery.length) %
+          selectedClient.gallery.length
+      );
+    }
+  }, [selectedClient, selectedImageIndex]);
 
   return (
     <>
@@ -52,25 +63,7 @@ const ClientAlbum = () => {
         <div className="container py-5">
           <div className="row">
             {Clients.map(client => (
-              <div className="col-md-4 mb-4" key={client.id}>
-                <div
-                  className="client-card"
-                  onClick={() => openModal(client)}
-                  style={{ cursor: "pointer" }}
-                >
-                  <div className="client-info-overlay">
-                    <div className="client-info">
-                      <h5 className="client-name">{client.name}</h5>
-                      <p className="event-date">{client.eventDate}</p>
-                    </div>
-                  </div>
-                  <img
-                    src={client.profileImg}
-                    alt={client.name}
-                    className="img-fluid client-img"
-                  />
-                </div>
-              </div>
+              <ClientCard key={client.id} client={client} onOpen={openModal} />
             ))}
           </div>
         </div>
@@ -91,50 +84,17 @@ const ClientAlbum = () => {
               </div>
 
               <div className="modal-body" style={{ backgroundColor: "white" }}>
-                {selectedImageIndex !== null && (
-                  <div className="selected-image-view text-center">
-                    <img
-                      src={selectedClient.gallery[selectedImageIndex]}
-                      alt={`${selectedClient.name} Image ${
-                        selectedImageIndex + 1
-                      }`}
-                      className="img-fluid large-image"
-                    />
-                    <div className="image-nav mt-3">
-                      <button
-                        className="btn btn-secondary"
-                        onClick={showPrevImage}
-                        disabled={selectedImageIndex === 0}
-                      >
-                        Previous
-                      </button>
-                      <button
-                        className="btn btn-secondary ms-2"
-                        onClick={showNextImage}
-                        disabled={
-                          selectedImageIndex ===
-                          selectedClient.gallery.length - 1
-                        }
-                      >
-                        Next
-                      </button>
-                    </div>
-                  </div>
-                )}
-
                 <div className="row mt-5">
                   {selectedClient.gallery.map((image, index) => (
                     <div
                       className="col-md-4 mb-3"
                       key={index}
-                      onClick={() => selectImage(index)}
+                      onClick={() => openSingleImageModal(index)}
                     >
                       <img
                         src={image}
                         alt={`${selectedClient.name} Image ${index + 1}`}
-                        className={`img-fluid modal-img ${
-                          index === selectedImageIndex ? "selected-img" : ""
-                        }`}
+                        className="img-fluid modal-img"
                         style={{ cursor: "pointer" }}
                       />
                     </div>
@@ -145,6 +105,19 @@ const ClientAlbum = () => {
           </div>
         </div>
       )}
+
+      {/* Single Image Modal */}
+      {isSingleImageModalOpen &&
+        selectedClient &&
+        selectedImageIndex !== null && (
+          <ImageModal
+            images={selectedClient.gallery}
+            currentImageIndex={selectedImageIndex}
+            closeModal={closeSingleImageModal}
+            showNextImage={showNextImage}
+            showPrevImage={showPrevImage}
+          />
+        )}
     </>
   );
 };

@@ -6,9 +6,7 @@ import { NavLinks } from "./Common/CommonComponent";
 const Navbar = () => {
   const closeNavbar = () => {
     const navbarCollapse = document.getElementById("navbarNav");
-    if (navbarCollapse.classList.contains("show")) {
-      navbarCollapse.classList.remove("show"); // Closes the navbar
-    }
+    navbarCollapse?.classList.remove("show");
   };
 
   return (
@@ -34,15 +32,15 @@ const Navbar = () => {
           id="navbarNav"
         >
           <ul className="navbar-nav">
-            {NavLinks.map(item => (
-              <li className="nav-item" key={item.title}>
+            {NavLinks.map(({ title, link }) => (
+              <li className="nav-item" key={title}>
                 <Link
                   className="nav-link"
                   style={{ color: "rgb(210 164 80)" }}
-                  to={item.link}
+                  to={link}
                   onClick={closeNavbar}
                 >
-                  {item.title}
+                  {title}
                 </Link>
               </li>
             ))}

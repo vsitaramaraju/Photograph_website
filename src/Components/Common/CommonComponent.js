@@ -251,11 +251,15 @@ export const bioData = {
     description: `
       Brief description about the owner and their work. You can elaborate on the owner's background, 
       expertise, and the purpose of their work. Add any professional highlights, skills, and other 
-      relevant information that you'd like to showcase.
+      relevant information that you'd like to showcase, Brief description about the owner and their work. You can elaborate on the owner's background, 
+      expertise, and the purpose of their work. Add any professional highlights, skills, and other 
+      relevant information that you'd like to showcase
     `
   },
   workDetails: `
     Some additional information or highlights of your work can be added here. You can elaborate 
+    further on your projects, achievements, or services offered. Include any important highlights 
+    that showcase your expertise and the quality of your work, Some additional information or highlights of your work can be added here. You can elaborate 
     further on your projects, achievements, or services offered. Include any important highlights 
     that showcase your expertise and the quality of your work.
   `,

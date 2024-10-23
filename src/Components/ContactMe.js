@@ -111,9 +111,12 @@ const ContactMe = () => {
         <div className="col-md-12">
           <div
             className="card form-card p-4"
-            style={{ border: "none", boxShadow: "none" }}
+            style={{ border: "none", boxShadow: "none", letterSpacing: 1 }}
           >
-            <h2 className="text-center mb-4" style={{ letterSpacing: "1px" }}>
+            <h2
+              className="text-center mb-4"
+              style={{ letterSpacing: 3, fontSize: 30 }}
+            >
               GET IN TOUCH
             </h2>
             <form onSubmit={handleSubmit}>

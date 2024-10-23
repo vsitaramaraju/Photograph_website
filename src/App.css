@@ -396,12 +396,21 @@ footer {
 
 .bio-text h2 {
   letter-spacing: 3px;
-  font-size: larger;
+  font-size: 30px;
 }
 
 .bio {
   font-size: 15px;
   font-weight: 400;
+}
+
+.contact-me {
+  letter-spacing: 3px;
+  font-size: 30px;
+}
+
+.contact-details {
+  letter-spacing: 1px;
 }
 
 @media (max-width: 992px) {
@@ -420,12 +429,22 @@ footer {
     text-align: center;
     padding-top: 1.5rem;
   }
+
+  .bio-text h2 {
+    text-align: center;
+  }
+
+  .contact-me {
+    text-align: center;
+  }
+
   .bio {
     text-align: justify !important ;
   }
 
   .contact-details {
     text-align: center !important;
+    letter-spacing: 2px;
   }
 }
 

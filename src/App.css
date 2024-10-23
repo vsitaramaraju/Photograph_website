@@ -394,12 +394,14 @@ footer {
 
 /*Bio*/
 
-.bio-text {
+.bio-text h2 {
   letter-spacing: 3px;
+  font-size: larger;
 }
 
 .bio {
-  font-size: medium;
+  font-size: 15px;
+  font-weight: 400;
 }
 
 @media (max-width: 992px) {

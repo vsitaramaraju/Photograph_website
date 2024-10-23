@@ -8,12 +8,18 @@ const Footer = () => {
       <div className="container text-center">
         {/* Navigation Menu Links */}
         <div className="mb-3">
-          {NavLinks.map(item => (
-            <Link className="text-black mx-3 footerlinks" to={item.link}>
+          {NavLinks.map((item, index) => (
+            <Link
+              key={index}
+              className="text-black mx-3 footerlinks"
+              to={item.link}
+              aria-label={item.title}
+            >
               {item.title}
             </Link>
           ))}
         </div>
+
         {/* Social Media Icons */}
         <div className="mb-3">
           <a
@@ -21,6 +27,7 @@ const Footer = () => {
             className="text-black mx-3"
             target="_blank"
             rel="noopener noreferrer"
+            aria-label="Facebook"
           >
             <i className="bi bi-facebook"></i>
           </a>
@@ -29,14 +36,16 @@ const Footer = () => {
             className="text-black mx-3"
             target="_blank"
             rel="noopener noreferrer"
+            aria-label="Twitter"
           >
-            <i className="bi bi-twitter-x"></i>
+            <i className="bi bi-twitter"></i>
           </a>
           <a
             href="https://instagram.com"
             className="text-black mx-3"
             target="_blank"
             rel="noopener noreferrer"
+            aria-label="Instagram"
           >
             <i className="bi bi-instagram"></i>
           </a>
@@ -45,6 +54,7 @@ const Footer = () => {
             className="text-black mx-3"
             target="_blank"
             rel="noopener noreferrer"
+            aria-label="LinkedIn"
           >
             <i className="bi bi-linkedin"></i>
           </a>
@@ -62,4 +72,4 @@ const Footer = () => {
   );
 };
 
-export default Footer;
+export default React.memo(Footer);

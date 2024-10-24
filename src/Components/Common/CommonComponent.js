@@ -1,4 +1,4 @@
-import { memo } from "react";
+import { memo, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
 /*Header Carousel Images*/
@@ -295,3 +295,21 @@ export const ClientCard = memo(({ client, onOpen }) => (
     </div>
   </div>
 ));
+
+/*Animation page load*/
+
+export const usePageLoadAnimation = (delay = 100) => {
+  const [isPageLoaded, setIsPageLoaded] = useState(false);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsPageLoaded(true);
+    }, delay);
+
+    return () => clearTimeout(timer);
+  }, [delay]);
+
+  return isPageLoaded;
+};
+
+export default usePageLoadAnimation;

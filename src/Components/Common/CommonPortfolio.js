@@ -1,4 +1,4 @@
-import React, { useState, useMemo, lazy, Suspense } from "react";
+import React, { useState, useMemo, lazy, Suspense, useEffect } from "react";
 import { CommonHead } from "../Common/CommonComponent";
 import { useLocation } from "react-router-dom";
 import { GallaryImage } from "../Common/CommonComponent";
@@ -22,6 +22,15 @@ const CommonPortfolio = () => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [visibleImagesCount, setVisibleImagesCount] = useState(10);
   const [loadingImages, setLoadingImages] = useState(true);
+  const [isPageLoaded, setIsPageLoaded] = useState(false);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsPageLoaded(true);
+    }, 100); // Delay to trigger fade-in animation
+
+    return () => clearTimeout(timer);
+  }, []);
 
   const openModal = index => {
     setCurrentImageIndex(index);
@@ -54,11 +63,19 @@ const CommonPortfolio = () => {
     setLoadingImages(false);
   };
 
+  console.log(isModalOpen);
+
   return (
     <>
-      <div style={{ minHeight: "55vh" }}>
+      {/* Page Header */}
+      <div
+        style={{ minHeight: "55vh" }}
+        className={`fade-in-bright ${isPageLoaded ? "visible" : ""}`}
+      >
         <CommonHead title={title} />
       </div>
+
+      {/* Gallery Section */}
       <div style={{ backgroundColor: "rgb(255 255 255 / 33%)" }}>
         <div className="container py-5 gallery">
           {selectedGallery ? (
@@ -67,11 +84,13 @@ const CommonPortfolio = () => {
                 .slice(0, visibleImagesCount)
                 .map((image, index) => (
                   <div
-                    className="pics"
+                    className={`pics fade-in-bright ${
+                      isPageLoaded ? "visible" : ""
+                    }`}
                     key={index}
                     onClick={() => openModal(index)}
                   >
-                    {/* Skeleton loading using a div that disappears once image is loaded */}
+                    {/* Skeleton loader */}
                     {loadingImages && <div className="skeleton-loader"></div>}
                     <img
                       src={image}
@@ -90,6 +109,8 @@ const CommonPortfolio = () => {
             <p>No images found for this album.</p>
           )}
         </div>
+
+        {/* See More Button */}
         {visibleImagesCount < selectedGallery.images.length && (
           <div className="text-center p-3">
             <button className="btn btn-primary" onClick={handleSeeMore}>

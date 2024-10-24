@@ -1,18 +1,28 @@
 import React from "react";
-import {
+import usePageLoadAnimation, {
   CommonHead,
   VideoItem,
   videos
 } from "../Components/Common/CommonComponent";
 
 const Video = () => {
+  const isPageLoaded = usePageLoadAnimation(100); // Use the hook with a 100ms delay
+
   return (
     <>
-      <div style={{ minHeight: "55vh" }}>
+      {/* Page Header */}
+      <div
+        style={{ minHeight: "55vh" }}
+        className={`fade-in-bright ${isPageLoaded ? "visible" : ""}`}
+      >
         <CommonHead title="Video" />
       </div>
 
-      <div style={{ backgroundColor: "rgba(255, 255, 255, 0.33)" }}>
+      {/* Video Gallery Section */}
+      <div
+        style={{ backgroundColor: "rgba(255, 255, 255, 0.33)" }}
+        className={`fade-in-bright ${isPageLoaded ? "visible" : ""}`}
+      >
         <div className="container py-5">
           <div className="row justify-content-center">
             {videos.map(video => (

@@ -1,4 +1,4 @@
-import { Route, Routes } from "react-router-dom";
+import { Navigate, Route, Routes } from "react-router-dom";
 import "./App.css";
 import Portfolio from "./Pages/Portfolio";
 import Video from "./Pages/Video";
@@ -25,6 +25,7 @@ function App() {
         {Path.map(item => (
           <Route path={`/portfolio/${item}`} element={<CommonPortfolio />} />
         ))}
+        <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
       <Footer />
     </div>

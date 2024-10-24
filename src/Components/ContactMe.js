@@ -102,7 +102,7 @@ const ContactMe = () => {
     setShowToast(true);
     setTimeout(() => {
       setShowToast(false);
-    }, 5000);
+    }, 3000);
   };
 
   return (
@@ -208,39 +208,42 @@ const ContactMe = () => {
 
       {/* Bootstrap Toast Notification */}
       <div
-        className={`toast position-fixed top-0 end-1 p-3 ${
-          showToast ? "show" : ""
-        }`}
-        style={{ zIndex: 11 }}
+        className={`toast-container position-fixed top-50 start-50 translate-middle p-3`}
+        style={{ zIndex: 11, maxWidth: "90%", width: "400px" }}
         role="alert"
         aria-live="assertive"
         aria-atomic="true"
       >
         <div
-          className={`toast-header ${
-            toastType === "success" ? "bg-success" : "bg-danger"
-          } text-white`}
+          className={`toast ${showToast ? "show" : ""}`}
+          style={{ width: "100%" }}
         >
-          <strong className="me-auto">
-            {toastType === "success" ? "Success" : "Error"}
-          </strong>
-          <button
-            type="button"
-            className="btn-close"
-            data-bs-dismiss="toast"
-            aria-label="Close"
-            onClick={() => setShowToast(false)}
-          ></button>
-        </div>
-        <div className="toast-body">
-          {toastType === "success" ? (
-            <>
-              <strong>{`Thank you for Choosing Love Tales Studo 😊`} </strong>
-              {toastMessage}
-            </>
-          ) : (
-            toastMessage
-          )}
+          <div
+            className={`toast-header ${
+              toastType === "success" ? "bg-success" : "bg-danger"
+            } text-white`}
+          >
+            <strong className="me-auto">
+              {toastType === "success" ? "Success" : "Error"}
+            </strong>
+            <button
+              type="button"
+              className="btn-close"
+              data-bs-dismiss="toast"
+              aria-label="Close"
+              onClick={() => setShowToast(false)}
+            ></button>
+          </div>
+          <div className="toast-body">
+            {toastType === "success" ? (
+              <>
+                <strong>{`Thank you for Choosing Love Tales Studio 😊`}</strong>
+                {toastMessage}
+              </>
+            ) : (
+              toastMessage
+            )}
+          </div>
         </div>
       </div>
     </div>

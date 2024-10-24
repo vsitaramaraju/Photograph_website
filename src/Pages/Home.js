@@ -2,7 +2,7 @@ import React, { useEffect, useState, useCallback } from "react";
 import { useLocation, Link } from "react-router-dom";
 import "../Home.css";
 import video from "../assets/video.mp4";
-import {
+import usePageLoadAnimation, {
   CommonHead,
   HeaderImages,
   Image
@@ -14,6 +14,7 @@ const getCarouselClass = isActive =>
 const Home = () => {
   const [imgClass, setImgClass] = useState("w-100");
   const location = useLocation();
+  const isPageLoaded = usePageLoadAnimation(100);
 
   // Throttle function to optimize resize event
   const handleResize = useCallback(() => {
@@ -37,7 +38,9 @@ const Home = () => {
   }, [handleResize]);
 
   return (
-    <main className="hero-section">
+    <main
+      className={`hero-section fade-in-bright ${isPageLoaded ? "visible" : ""}`}
+    >
       {/* Carousel */}
       <div className="hero-content-container">
         <div

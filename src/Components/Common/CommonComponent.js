@@ -25,8 +25,8 @@ export const Image = [
   {
     img1: "/images/image8.png",
     img2: "/images/image9.jpg",
-    title: "Baby",
-    url: "baby"
+    title: "Wedding",
+    url: "wedding"
   }
 ];
 

@@ -3,26 +3,28 @@ import { useLocation, Link } from "react-router-dom";
 import "../Home.css";
 import video from "../assets/video.mp4";
 import usePageLoadAnimation, {
-  CommonHead,
-  HeaderImages,
-  Image
+  CommonHead
 } from "../Components/Common/CommonComponent";
+import { storage, ref, listAll, getDownloadURL } from "../FireBaseConfig";
 
+const placeholderImage = "https://via.placeholder.com/800x400?text=Loading";
 const getCarouselClass = isActive =>
   `carousel-item ${isActive ? "active" : ""}`;
 
 const Home = () => {
   const [imgClass, setImgClass] = useState("w-100");
+  const [headerImages, setHeaderImages] = useState([]);
+  const [homeImage, setHomeImage] = useState([]);
   const location = useLocation();
   const isPageLoaded = usePageLoadAnimation(100);
 
-  // Throttle function to optimize resize event
+  // Resize handler to set image class based on screen width
   const handleResize = useCallback(() => {
     setImgClass(window.innerWidth < 768 ? "w-0" : "w-100");
   }, []);
 
   useEffect(() => {
-    handleResize(); // Initial call to set imgClass
+    handleResize();
 
     const resizeListener = () => {
       clearTimeout(window.resizeTimeout);
@@ -31,10 +33,53 @@ const Home = () => {
 
     window.addEventListener("resize", resizeListener);
 
-    return () => {
-      window.removeEventListener("resize", resizeListener);
-      clearTimeout(window.resizeTimeout);
+    // Fetch header and home images
+    const fetchImages = async () => {
+      try {
+        const headerImagesRef = ref(storage, "CarouselImages");
+        const homeImagesRef = ref(storage, "HomeImages");
+
+        const [headerList, homeList] = await Promise.all([
+          listAll(headerImagesRef),
+          listAll(homeImagesRef)
+        ]);
+
+        const [headerUrls, homeUrls] = await Promise.all([
+          Promise.all(headerList.items.map(item => getDownloadURL(item))),
+          Promise.all(homeList.items.map(item => getDownloadURL(item)))
+        ]);
+
+        const imagePairs = [
+          {
+            img1: homeUrls[0] || placeholderImage,
+            img2: homeUrls[1] || placeholderImage,
+            title: "Model",
+            url: "model"
+          },
+          {
+            img1: homeUrls[2] || placeholderImage,
+            img2: homeUrls[3] || placeholderImage,
+            title: "Wedding",
+            url: "wedding"
+          },
+          {
+            img1: homeUrls[4] || placeholderImage,
+            img2: homeUrls[5] || placeholderImage,
+            title: "Baby",
+            url: "baby"
+          }
+        ];
+
+        setHeaderImages(headerUrls);
+        setHomeImage(imagePairs);
+      } catch (error) {
+        console.error("Error fetching images from storage:", error);
+      }
     };
+
+    fetchImages();
+
+    return () => window.removeEventListener("resize", resizeListener);
   }, [handleResize]);
 
   return (
@@ -49,17 +94,18 @@ const Home = () => {
           data-bs-ride="carousel"
         >
           <div className="carousel-inner">
-            {HeaderImages.map((item, index) => (
-              <div className={getCarouselClass(index === 0)} key={index}>
-                <img
-                  className={`d-block ${imgClass}`}
-                  src={item}
-                  alt={`Slide ${index + 1}`}
-                />
-              </div>
-            ))}
+            {(headerImages.length ? headerImages : [placeholderImage]).map(
+              (item, index) => (
+                <div className={getCarouselClass(index === 0)} key={index}>
+                  <img
+                    className={`d-block ${imgClass}`}
+                    src={item}
+                    alt={`Slide ${index + 1}`}
+                  />
+                </div>
+              )
+            )}
           </div>
-
           {/* Carousel Controls */}
           <button
             className="carousel-control-prev"
@@ -86,7 +132,7 @@ const Home = () => {
       {/* Multi card */}
       <div className="container" style={{ maxWidth: 1060, paddingTop: 30 }}>
         <div className="row row-cols-1 row-cols-md-3 g-3 pt-5 justify-content-center">
-          {Image.map((item, index) => (
+          {homeImage.map((item, index) => (
             <div className="col" key={index}>
               <Link
                 className="card"
@@ -137,7 +183,6 @@ const Home = () => {
                 </p>
               </div>
               <div className="video-container">
-                {/* Video with autoplay and responsive handling */}
                 <Link to="/video">
                   <video className="video-fluid" autoPlay muted loop>
                     <source src={video} type="video/mp4" />
